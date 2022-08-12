@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function WelcomeScreen() {
+export default function AddItemsScreen() {
   return (
     <View>
-      <Text>WelcomeScreen</Text>
     </View>
   )
 }

@@ -1,29 +1,18 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from "react-native";
+import { NavigationContainer, StackActions } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import colours from "./app/assets/colours";
+import TabBar from "./app/shared/TabBar";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={() => console.log("test")}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar style="light" backgroundColor={colours.secondary} />
+      <TabBar />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
