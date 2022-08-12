@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import colours from "../assets/colours";
+import React from "react";
 
 export default function AddItemsScreen() {
-  return (
-    <View>
-    </View>
-  )
+  return <SafeAreaView style={styles.container}></SafeAreaView>;
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colours.primary,
+  },
+});

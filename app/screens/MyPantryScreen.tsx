@@ -4,7 +4,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 
 export default function MyPantryScreen() {
-  return <View style={styles.container}></View>;
+  return <SafeAreaView style={styles.container}></SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
