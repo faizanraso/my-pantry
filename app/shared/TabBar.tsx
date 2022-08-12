@@ -16,6 +16,7 @@ export default function TabBar() {
         },
         headerStyle: {
           backgroundColor: colours.secondary,
+          borderBottomColor: colours.navigationBorder,
         },
         headerTitleStyle: {
           color: colours.headerFont,
@@ -35,7 +36,7 @@ export default function TabBar() {
             <Feather
               name="shopping-bag"
               color={focused ? colours.activeTab : colours.inactiveTab}
-              size={24}
+              size={size}
             />
           ),
         }}
@@ -48,7 +49,7 @@ export default function TabBar() {
             <Feather
               name="plus-square"
               color={focused ? colours.activeTab : colours.inactiveTab}
-              size={24}
+              size={size}
             />
           ),
         }}
