@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import colours from "../assets/colours";
+import colours from "./colours";
 import MyPantryScreen from "../screens/MyPantryScreen";
 import AddItemsScreen from "../screens/AddItemsScreen";
 import { Feather } from "@expo/vector-icons";

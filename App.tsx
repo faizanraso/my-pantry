@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import colours from "./app/assets/colours";
+import colours from "./app/shared/colours";
 import TabBar from "./app/shared/TabBar";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 

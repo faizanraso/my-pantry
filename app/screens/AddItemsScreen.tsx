@@ -10,7 +10,7 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
-import colours from "../assets/colours";
+import colours from "../shared/colours";
 import React from "react";
 
 export default function AddItemsScreen() {
