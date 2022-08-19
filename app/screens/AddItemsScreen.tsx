@@ -13,29 +13,29 @@ import {
 import colours from "../shared/colours";
 import React from "react";
 
-export default function AddItemsScreen() {
+export default function AddItemsScreen({ navigation }: { navigation: any }) {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.optionButtons}>
         <View style={styles.buttonContent}>
-          <Text style={styles.buttonText}>Enter Manually {'  '}</Text>
-          <Entypo name="plus" size={17} color={colours.textFont} />
+          <Text style={styles.buttonText}>Enter Manually {"  "}</Text>
+          <Entypo name="plus" size={17} color={colours.text} />
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.optionButtons}>
         <View style={styles.buttonContent}>
-          <Text style={styles.buttonText}>Scan Barcode {'    '}</Text>
+          <Text style={styles.buttonText}>Scan Barcode {"    "}</Text>
           <MaterialCommunityIcons
             name="barcode-scan"
             size={17}
-            color={colours.textFont}
+            color={colours.text}
           />
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.optionButtons}>
         <View style={styles.buttonContent}>
-          <Text style={styles.buttonText}>Search Directory {'    '}</Text>
-          <FontAwesome5 name="search" size={17} color={colours.textFont} />
+          <Text style={styles.buttonText}>Search Directory {"    "}</Text>
+          <FontAwesome5 name="search" size={17} color={colours.text} />
         </View>
       </TouchableOpacity>
     </SafeAreaView>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    color: colours.textFont,
+    color: colours.text,
     fontWeight: "500",
     fontSize: 15,
   },

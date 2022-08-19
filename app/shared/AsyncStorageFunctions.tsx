@@ -36,8 +36,6 @@ export const getAllKeys = async () => {
     // read key error
   }
   console.log(keys);
-  // example console.log result:
-  // ['@MyApp_user', '@MyApp_key']
 };
 
 export const clearAll = async () => {
