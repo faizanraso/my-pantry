@@ -12,10 +12,8 @@ export const storeData = async (key: string, value: any) => {
 export const getData = async (key: string) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key);
-    console.log(jsonValue);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
-    console.log("no data");
     // error reading value
   }
 };
@@ -26,17 +24,16 @@ export const removeValue = async (key: string) => {
   } catch (e) {
     // remove error
   }
-  console.log("Done.");
 };
 
 export const getAllKeys = async () => {
   let keys: readonly string[] = [];
   try {
     keys = await AsyncStorage.getAllKeys();
-    return keys;
   } catch (e) {
     // read key error
   }
+  return keys;
 };
 
 export const clearAll = async () => {
@@ -45,5 +42,4 @@ export const clearAll = async () => {
   } catch (e) {
     // clear error
   }
-  console.log("Done.");
 };

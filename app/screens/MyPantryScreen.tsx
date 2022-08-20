@@ -16,20 +16,18 @@ export default function MyPantryScreen() {
   // create an array for all qunatities (useState)
   // keep pushing updates to the asyncstorage
 
-  const [allItems, setAllItems] = React.useState()
-  
-  React.useEffect(()=>{
-    // getAllKeys().then((tempList) => setAllItems(tempList))
-  }, [])
+  const [allItems, setAllItems] = React.useState<readonly string[]>([]);
+
+  React.useEffect(() => {
+    getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <Item item={"Test 1"} />
-        <Item item={"Test 2"} />
-        <Item item={"Test 3"} />
-        <Item item={"Test 4"} />
-        <Item item={"not a test"} />
+        {allItems.map((itemName, index) => {
+          return <Item key={index} item={itemName} />;
+        })}
       </ScrollView>
     </SafeAreaView>
   );
