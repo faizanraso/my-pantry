@@ -10,16 +10,26 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import colours from "../shared/colours";
+import { getData, storeData } from "../shared/AsyncStorageFunctions";
 
-export default function Item(props: {
-  item: string | null | undefined;
-  quantity: number | null | undefined;
-  increaseFunction: ((event: GestureResponderEvent) => void) | undefined;
-  decreaseFunction: ((event: GestureResponderEvent) => void) | undefined;
-}) {
+export default function Item(props: { item: string }) {
+  const [quantity, setQuantity] = React.useState(0);
 
+  React.useEffect(() => {
+    getData(props.item).then((tempQuantity) => setQuantity(tempQuantity));
+  }, []);
 
-  const [count, setCount] = React.useState(0)
+  function increaseQuantity() {
+    var tempCount = quantity + 1;
+    storeData(props.item, tempCount);
+    setQuantity(tempCount);
+  }
+
+  function decreaseQuantity() {
+    var tempCount = quantity - 1;
+    storeData(props.item, tempCount);
+    setQuantity(tempCount);
+  }
 
   return (
     <View style={styles.container}>
@@ -27,12 +37,23 @@ export default function Item(props: {
         <Text style={styles.text}>{props.item}</Text>
       </View>
       <View style={styles.rightSideView}>
-        <TouchableOpacity onPress={props.decreaseFunction}>
-          <AntDesign name="minuscircle" size={18} color={colours.text} />
+        <TouchableOpacity
+          onPress={decreaseQuantity}
+          disabled={true ? quantity == 0 : false}
+        >
+          <AntDesign
+            name="minuscircle"
+            size={18}
+            color={colours.enabledQuantityButton}
+          />
         </TouchableOpacity>
-        <Text style={styles.text}>{"  " + props.quantity + "  "}</Text>
-        <TouchableOpacity onPress={props.increaseFunction}>
-          <AntDesign name="pluscircle" size={18} color={colours.text} />
+        <Text style={styles.text}>{"  " + quantity + "  "}</Text>
+        <TouchableOpacity onPress={increaseQuantity}>
+          <AntDesign
+            name="pluscircle"
+            size={18}
+            color={colours.enabledQuantityButton}
+          />
         </TouchableOpacity>
       </View>
     </View>

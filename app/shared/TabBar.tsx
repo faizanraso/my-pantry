@@ -13,10 +13,14 @@ export default function TabBar() {
       screenOptions={{
         tabBarStyle: {
           backgroundColor: colours.secondary,
+          borderTopWidth: 0,
         },
+
         headerStyle: {
           backgroundColor: colours.secondary,
           borderBottomColor: colours.navigationBorder,
+          borderWidth: 0,
+          borderColor: colours.navigationBorder,
         },
         headerTitleStyle: {
           color: colours.headerFont,

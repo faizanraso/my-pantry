@@ -12,29 +12,24 @@ import {
 } from "../shared/AsyncStorageFunctions";
 
 export default function MyPantryScreen() {
-  function increaseQuantity(e: any) {
-    console.log(e);
-  }
+  // create an array containing a list of all item names (useState)
+  // create an array for all qunatities (useState)
+  // keep pushing updates to the asyncstorage
 
-  function decreaseQuantity(e: any) {
-    console.log(e);
-  }
+  const [allItems, setAllItems] = React.useState()
+  
+  React.useEffect(()=>{
+    // getAllKeys().then((tempList) => setAllItems(tempList))
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <Item
-          item={"Test"}
-          quantity={4}
-          increaseFunction={increaseQuantity}
-          decreaseFunction={decreaseQuantity}
-        />
-        <Item
-          item={"Test"}
-          quantity={4}
-          increaseFunction={increaseQuantity}
-          decreaseFunction={decreaseQuantity}
-        />
+        <Item item={"Test 1"} />
+        <Item item={"Test 2"} />
+        <Item item={"Test 3"} />
+        <Item item={"Test 4"} />
+        <Item item={"not a test"} />
       </ScrollView>
     </SafeAreaView>
   );
