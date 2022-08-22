@@ -17,7 +17,10 @@ import TabBar from "../shared/TabBar";
 export default function AddItemsScreen({ navigation }: { navigation: any }) {
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.optionButtons}>
+      <TouchableOpacity
+        style={styles.optionButtons}
+        onPress={() => navigation.navigate("Item Entry")}
+      >
         <View style={styles.buttonContent}>
           <Text style={styles.buttonText}>Enter Manually {"  "}</Text>
           <Entypo name="plus" size={17} color={colours.text} />

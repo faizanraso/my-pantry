@@ -23,7 +23,9 @@ export default function MyPantryScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         {allItems.map((itemName, index) => {
-          return <Item key={index} item={itemName} />;
+          if (itemName != "scannedBarcode") {
+            return <Item key={index} item={itemName} />;
+          }
         })}
       </ScrollView>
     </SafeAreaView>
