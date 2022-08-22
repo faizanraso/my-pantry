@@ -12,6 +12,7 @@ import {
 } from "@expo/vector-icons";
 import colours from "../shared/colours";
 import React from "react";
+import TabBar from "../shared/TabBar";
 
 export default function AddItemsScreen({ navigation }: { navigation: any }) {
   return (
@@ -22,7 +23,10 @@ export default function AddItemsScreen({ navigation }: { navigation: any }) {
           <Entypo name="plus" size={17} color={colours.text} />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.optionButtons}>
+      <TouchableOpacity
+        style={styles.optionButtons}
+        onPress={() => navigation.navigate("Barcode Scanner")}
+      >
         <View style={styles.buttonContent}>
           <Text style={styles.buttonText}>Scan Barcode {"    "}</Text>
           <MaterialCommunityIcons
@@ -30,12 +34,6 @@ export default function AddItemsScreen({ navigation }: { navigation: any }) {
             size={17}
             color={colours.text}
           />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.optionButtons}>
-        <View style={styles.buttonContent}>
-          <Text style={styles.buttonText}>Search Directory {"    "}</Text>
-          <FontAwesome5 name="search" size={17} color={colours.text} />
         </View>
       </TouchableOpacity>
     </SafeAreaView>
@@ -53,9 +51,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colours.secondary,
     borderRadius: 15,
-    width: "85%",
-    height: "10%",
-    marginTop: "10%",
+    width: "90%",
+    height: "15%",
+    marginTop: "8%",
   },
   buttonText: {
     textAlign: "center",

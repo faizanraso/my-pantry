@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import colours from "./colours";
 import MyPantryScreen from "../screens/MyPantryScreen";
 import AddItemsScreen from "../screens/AddItemsScreen";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function TabBar() {
   const Tab = createBottomTabNavigator();

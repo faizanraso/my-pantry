@@ -10,12 +10,9 @@ import {
   getData,
   storeData,
 } from "../shared/AsyncStorageFunctions";
+import TabBar from "../shared/TabBar";
 
 export default function MyPantryScreen() {
-  // create an array containing a list of all item names (useState)
-  // create an array for all qunatities (useState)
-  // keep pushing updates to the asyncstorage
-
   const [allItems, setAllItems] = React.useState<readonly string[]>([]);
 
   React.useEffect(() => {
