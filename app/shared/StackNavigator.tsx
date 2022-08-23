@@ -27,12 +27,18 @@ export default function StackNavigator() {
       <Stack.Screen
         name="Barcode Scanner"
         component={BarcodeScanScreen}
-        options={{ title: "Scan Barcode" }}
+        options={{
+          title: "Scan Barcode",
+          headerTitleStyle: { color: colours.header },
+        }}
       />
       <Stack.Screen
         name="Item Entry"
         component={ItemEntryScreen}
-        options={{ title: "Add Item" }}
+        options={{
+          title: "Add Item",
+          headerTitleStyle: { color: colours.header },
+        }}
       />
     </Stack.Navigator>
   );

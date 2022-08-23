@@ -24,7 +24,7 @@ export default function TabBar() {
           borderColor: colours.navigationBorder,
         },
         headerTitleStyle: {
-          color: colours.headerFont,
+          color: colours.header,
           fontWeight: "bold",
         },
         tabBarActiveBackgroundColor: colours.secondary,

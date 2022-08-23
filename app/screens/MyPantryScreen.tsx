@@ -1,6 +1,6 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import colours from "../shared/colours";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -13,9 +13,9 @@ import {
 import TabBar from "../shared/TabBar";
 
 export default function MyPantryScreen() {
-  const [allItems, setAllItems] = React.useState<readonly string[]>([]);
+  const [allItems, setAllItems] = useState<readonly string[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
   }, []);
 
