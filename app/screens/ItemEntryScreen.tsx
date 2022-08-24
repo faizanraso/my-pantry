@@ -1,25 +1,42 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import colours from "../shared/colours";
+import {
+  getData,
+  removeValue,
+  storeData,
+} from "../shared/AsyncStorageFunctions";
 
 export default function ItemEntryScreen({ navigation }: { navigation: any }) {
-  const [itemName, setItemName] = useState("");
+  const [itemName, setItemName] = useState<any>("");
+  const [itemQuantity, setItemQuantity] = useState<any>("");
+
+  useEffect(() => {
+    checkForScannedBarcode();
+  }, []);
+
+  function checkForScannedBarcode() {
+    getData("scannedBarcode").then((itemName) => setItemName(itemName));
+    removeValue("scannedBarcode");
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.itemNameContainer}>
         <Text style={styles.labelText}>Item Name:</Text>
         <TextInput
+          defaultValue={itemName}
           style={styles.textInput}
-          onChangeText={(text) => setItemName(text)}
+          onChangeText={(item) => setItemName(item)}
         />
       </View>
       <View style={styles.itemNameContainer}>
         <Text style={styles.labelText}>Quantity:</Text>
         <TextInput
+          defaultValue={itemQuantity}
           style={styles.textInput}
-          onChangeText={(text) => setItemName(text)}
+          onChangeText={(quantity) => setItemQuantity(quantity)}
           keyboardType="numeric"
         />
       </View>

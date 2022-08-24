@@ -1,4 +1,12 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import colours from "../shared/colours";
 import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
@@ -14,14 +22,27 @@ import TabBar from "../shared/TabBar";
 
 export default function MyPantryScreen() {
   const [allItems, setAllItems] = useState<readonly string[]>([]);
+  const [refreshing, setRefreshing] = useState<boolean>(true);
 
   useEffect(() => {
-    getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
+    loadUserData();
   }, []);
+
+  function loadUserData() {
+    setRefreshing(true);
+    getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
+    setRefreshing(false);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      {refreshing ? <ActivityIndicator color="#0000ff" /> : null}
+      <ScrollView
+        style={styles.scrollView}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={loadUserData} />
+        }
+      >
         {allItems.map((itemName, index) => {
           if (itemName != "scannedBarcode") {
             return <Item key={index} item={itemName} />;
