@@ -11,21 +11,27 @@ import {
 const axios = require("axios");
 
 export default function ItemEntryScreen({ navigation }: { navigation: any }) {
-  const [itemName, setItemName] = useState<string>("");
-  const [itemBarcode, setItemBarcode] = useState<string>("");
-  const [itemQuantity, setItemQuantity] = useState<string>("");
+  const [itemName, setItemName] = useState<any>("");
+  // const [itemBarcode, setItemBarcode] = useState<any>("");
+  const [itemQuantity, setItemQuantity] = useState<any>("");
 
   useEffect(() => {
     checkForScannedBarcode();
-    if (itemBarcode != "" || itemBarcode != null) {
-      searchBarcode(itemBarcode);
-    }
   }, []);
 
-  function searchBarcode(barcodeNumber: string) {
+  function checkForScannedBarcode() {
+    getData("scannedBarcode").then((scannedItemBarcode) => {
+      if (scannedItemBarcode) {
+        searchBarcode(scannedItemBarcode.substring(1));
+        removeValue("scannedBarcode");
+      }
+    });
+  }
+
+  function searchBarcode(barcodeToSearch: any) {
     const options = {
       method: "GET",
-      url: "https://barcode-monster.p.rapidapi.com/" + barcodeNumber,
+      url: `https://barcode-monster.p.rapidapi.com/${barcodeToSearch}`,
       headers: {
         "X-RapidAPI-Key": "b9cc0a9b83msh037d555d67effd9p1b3e55jsn082910f482dc",
         "X-RapidAPI-Host": "barcode-monster.p.rapidapi.com",
@@ -36,17 +42,11 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
       .request(options)
       .then(function (response: { data: any }) {
         console.log(response.data);
+        setItemName(response.data.description);
       })
       .catch(function (error: any) {
         console.error(error);
       });
-  }
-
-  function checkForScannedBarcode() {
-    getData("scannedBarcode").then((itemBarcode) =>
-      setItemBarcode(itemBarcode)
-    );
-    removeValue("scannedBarcode");
   }
 
   function addNewItem() {
