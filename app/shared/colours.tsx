@@ -3,6 +3,7 @@ export default {
   secondary: "#171A21",
   header: "#C9CFD7",
   text: "#C9CFD7",
+  loadingIndicator: "#C9CFD7",
   enabledQuantityButton: "#C9CFD7",
   disabledQuantityButton: "#B2B6BC",
   activeTab: "#A397E7",

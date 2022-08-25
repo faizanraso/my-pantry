@@ -8,17 +8,50 @@ import {
   storeData,
 } from "../shared/AsyncStorageFunctions";
 
+const axios = require("axios");
+
 export default function ItemEntryScreen({ navigation }: { navigation: any }) {
-  const [itemName, setItemName] = useState<any>("");
-  const [itemQuantity, setItemQuantity] = useState<any>("");
+  const [itemName, setItemName] = useState<string>("");
+  const [itemBarcode, setItemBarcode] = useState<string>("");
+  const [itemQuantity, setItemQuantity] = useState<string>("");
 
   useEffect(() => {
     checkForScannedBarcode();
+    if (itemBarcode != "" || itemBarcode != null) {
+      searchBarcode(itemBarcode);
+    }
   }, []);
 
+  function searchBarcode(barcodeNumber: string) {
+    const options = {
+      method: "GET",
+      url: "https://barcode-monster.p.rapidapi.com/" + barcodeNumber,
+      headers: {
+        "X-RapidAPI-Key": "b9cc0a9b83msh037d555d67effd9p1b3e55jsn082910f482dc",
+        "X-RapidAPI-Host": "barcode-monster.p.rapidapi.com",
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response: { data: any }) {
+        console.log(response.data);
+      })
+      .catch(function (error: any) {
+        console.error(error);
+      });
+  }
+
   function checkForScannedBarcode() {
-    getData("scannedBarcode").then((itemName) => setItemName(itemName));
+    getData("scannedBarcode").then((itemBarcode) =>
+      setItemBarcode(itemBarcode)
+    );
     removeValue("scannedBarcode");
+  }
+
+  function addNewItem() {
+    storeData(itemName, itemQuantity);
+    navigation.navigate("My Pantry");
   }
 
   return (
@@ -42,7 +75,7 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
       </View>
       <TouchableOpacity
         style={styles.optionButtons}
-        onPress={() => navigation.navigate("Item Entry")}
+        onPress={() => addNewItem()}
       >
         <View style={styles.buttonContent}>
           <Text style={styles.buttonText}>Add to Pantry {"  "}</Text>

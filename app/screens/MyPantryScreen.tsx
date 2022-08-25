@@ -26,21 +26,29 @@ export default function MyPantryScreen() {
 
   useEffect(() => {
     loadUserData();
+
+    //sort items array
+    const sorted = [...allItems].sort();
+    setAllItems(sorted);
   }, []);
 
-  function loadUserData() {
+  const loadUserData = React.useCallback(() => {
     setRefreshing(true);
     getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
     setRefreshing(false);
-  }
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      {refreshing ? <ActivityIndicator color="#0000ff" /> : null}
       <ScrollView
         style={styles.scrollView}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={loadUserData} />
+          <RefreshControl
+            refreshing={refreshing}
+            progressBackgroundColor={colours.loadingIndicator}
+            tintColor={colours.loadingIndicator}
+            onRefresh={loadUserData}
+          />
         }
       >
         {allItems.map((itemName, index) => {
