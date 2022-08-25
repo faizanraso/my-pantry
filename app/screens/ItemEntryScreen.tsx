@@ -12,7 +12,6 @@ const axios = require("axios");
 
 export default function ItemEntryScreen({ navigation }: { navigation: any }) {
   const [itemName, setItemName] = useState<any>("");
-  // const [itemBarcode, setItemBarcode] = useState<any>("");
   const [itemQuantity, setItemQuantity] = useState<any>("");
 
   useEffect(() => {
@@ -41,7 +40,6 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
     axios
       .request(options)
       .then(function (response: { data: any }) {
-        console.log(response.data);
         setItemName(response.data.description);
       })
       .catch(function (error: any) {

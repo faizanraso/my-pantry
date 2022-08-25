@@ -6,6 +6,7 @@ export default {
   loadingIndicator: "#C9CFD7",
   enabledQuantityButton: "#C9CFD7",
   disabledQuantityButton: "#B2B6BC",
+  deleteButton: "#7B1702",
   activeTab: "#A397E7",
   inactiveTab: "#CAD0D8",
   navigationBorder: "#41434A",
