@@ -26,17 +26,23 @@ export default function MyPantryScreen() {
 
   useEffect(() => {
     loadUserData();
-
-    //sort items array
-    const sorted = [...allItems].sort();
-    setAllItems(sorted);
   }, []);
+
+  useEffect(() => {
+    loadUserData();
+  }, [allItems]);
 
   const loadUserData = React.useCallback(() => {
     setRefreshing(true);
-    getAllKeys().then((tempList: readonly string[]) => setAllItems(tempList));
+    getAllKeys().then((tempList: readonly string[]) => {
+      setAllItems(tempList);
+    });
     setRefreshing(false);
   }, []);
+
+  function deleteItem(itemName: string) {
+    removeValue(itemName);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,10 +57,8 @@ export default function MyPantryScreen() {
           />
         }
       >
-        {allItems.map((itemName, index) => {
-          if (itemName != "scannedBarcode") {
-            return <Item key={index} item={itemName} />;
-          }
+        {allItems.map((item, index) => {
+          return <Item key={index} item={item} />;
         })}
       </ScrollView>
     </SafeAreaView>

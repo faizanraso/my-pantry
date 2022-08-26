@@ -17,11 +17,13 @@ import {
 } from "../shared/AsyncStorageFunctions";
 
 export default function Item(props: { item: string }) {
-  const [quantity, setQuantity] = React.useState(0);
-  const [itemName, setItemName] = React.useState("");
+  const [quantity, setQuantity] = React.useState<number>(0);
+  const [itemName, setItemName] = React.useState<string>();
 
   React.useEffect(() => {
-    getData(props.item).then((tempQuantity) => setQuantity(tempQuantity));
+    getData(props.item).then((tempQuantity) =>
+      setQuantity(Number(tempQuantity))
+    );
     setItemName(truncateString(props.item, 20));
   }, []);
 
@@ -55,11 +57,7 @@ export default function Item(props: { item: string }) {
       </View>
       <View style={styles.rightSideView}>
         <TouchableOpacity onPress={deleteItem} style={styles.deleteButton}>
-          <MaterialIcons
-            name="delete"
-            size={18}
-            color={colours.deleteButton}
-          />
+          <MaterialIcons name="delete" size={18} color={colours.deleteButton} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={decreaseQuantity}
@@ -103,5 +101,5 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginRight: 15,
-  }
+  },
 });
