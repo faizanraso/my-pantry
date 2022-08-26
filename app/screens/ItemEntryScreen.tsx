@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import colours from "../shared/colours";
@@ -13,10 +13,20 @@ const axios = require("axios");
 export default function ItemEntryScreen({ navigation }: { navigation: any }) {
   const [itemName, setItemName] = useState<any>("");
   const [itemQuantity, setItemQuantity] = useState<any>("");
+  const [barcodeLookupSuccess, setbarcodeLookupSuccess] =
+    useState<boolean>(true);
 
   useEffect(() => {
     checkForScannedBarcode();
   }, []);
+
+  useEffect(() => {
+    if (!barcodeLookupSuccess) {
+      Alert.alert(
+        "Looks like we wern't able to find this item. Please try adding it manually."
+      );
+    }
+  }, [barcodeLookupSuccess]);
 
   function checkForScannedBarcode() {
     getData("scannedBarcode").then((scannedItemBarcode) => {
@@ -40,10 +50,18 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
     axios
       .request(options)
       .then(function (response: { data: any }) {
-        setItemName(response.data.description);
+        // setItemName(response.data.description);
+        if (response.data.description === undefined) {
+          setbarcodeLookupSuccess(false);
+        } else {
+          setbarcodeLookupSuccess(true);
+          setItemName(response.data.description);
+        }
       })
       .catch(function (error: any) {
-        console.error(error);
+        Alert.alert(
+          "Looks like we wern't able to find this item. Please try adding it manually."
+        );
       });
   }
 

@@ -12,7 +12,6 @@ export default function BarcodeScanScreen({ navigation }: { navigation: any }) {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
     };
-
     getBarCodeScannerPermissions();
   }, []);
 
