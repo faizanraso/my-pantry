@@ -28,13 +28,10 @@ export default function MyPantryScreen() {
     loadUserData();
   }, []);
 
-  useEffect(() => {
-    loadUserData();
-  }, [allItems]);
-
   const loadUserData = React.useCallback(() => {
     setRefreshing(true);
     getAllKeys().then((tempList: readonly string[]) => {
+      
       setAllItems(tempList);
     });
     setRefreshing(false);
