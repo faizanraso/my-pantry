@@ -26,12 +26,12 @@ export default function MyPantryScreen() {
 
   useEffect(() => {
     loadUserData();
-  }, []);
+  }, [allItems]);
 
   const loadUserData = React.useCallback(() => {
     setRefreshing(true);
     getAllKeys().then((tempList: readonly string[]) => {
-      
+      tempList = [...tempList].sort();
       setAllItems(tempList);
     });
     setRefreshing(false);
@@ -55,7 +55,7 @@ export default function MyPantryScreen() {
         }
       >
         {allItems.map((item, index) => {
-          return <Item key={index} item={item} />;
+          return <Item key={item} item={item} />;
         })}
       </ScrollView>
     </SafeAreaView>
