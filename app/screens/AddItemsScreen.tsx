@@ -5,14 +5,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {
-  Entypo,
-  MaterialCommunityIcons,
-  FontAwesome5,
-} from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import colours from "../shared/colours";
 import React from "react";
-import TabBar from "../shared/TabBar";
 
 export default function AddItemsScreen({ navigation }: { navigation: any }) {
   return (

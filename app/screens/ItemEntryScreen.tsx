@@ -1,4 +1,11 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import colours from "../shared/colours";
@@ -55,7 +62,7 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
           setbarcodeLookupSuccess(false);
         } else {
           setbarcodeLookupSuccess(true);
-          setItemName(response.data.description);
+          setItemName(response.data.description.slice(0, -23));
         }
       })
       .catch(function (error: any) {
@@ -90,7 +97,8 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
         />
       </View>
       <TouchableOpacity
-        style={styles.optionButtons}
+        style={styles.addItemButton}
+        disabled={!itemQuantity || !itemName ? true : false}
         onPress={() => addNewItem()}
       >
         <View style={styles.buttonContent}>
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 3,
   },
-  optionButtons: {
+  addItemButton: {
     justifyContent: "center",
     alignSelf: "center",
     backgroundColor: colours.secondary,

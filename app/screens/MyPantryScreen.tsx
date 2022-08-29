@@ -1,24 +1,13 @@
 import {
-  ActivityIndicator,
   RefreshControl,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  View,
 } from "react-native";
 import colours from "../shared/colours";
 import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
-import { StatusBar } from "expo-status-bar";
-import {
-  getAllKeys,
-  clearAll,
-  removeValue,
-  getData,
-  storeData,
-} from "../shared/AsyncStorageFunctions";
-import TabBar from "../shared/TabBar";
+import { getAllKeys, removeValue } from "../shared/AsyncStorageFunctions";
 
 export default function MyPantryScreen() {
   const [allItems, setAllItems] = useState<readonly string[]>([]);
