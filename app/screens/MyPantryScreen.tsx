@@ -26,10 +26,6 @@ export default function MyPantryScreen() {
     setRefreshing(false);
   }, []);
 
-  function deleteItem(itemName: string) {
-    removeValue(itemName);
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView

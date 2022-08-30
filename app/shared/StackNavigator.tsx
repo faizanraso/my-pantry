@@ -1,9 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MyPantryScreen from "../screens/MyPantryScreen";
-import AddItemsScreen from "../screens/AddItemsScreen";
 import BarcodeScanScreen from "../screens/BarcodeScanScreen";
 import TabBar from "./TabBar";
 import colours from "./colours";

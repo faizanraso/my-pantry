@@ -5,7 +5,6 @@ import MyPantryScreen from "../screens/MyPantryScreen";
 import AddItemsScreen from "../screens/AddItemsScreen";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function TabBar() {
   const Tab = createBottomTabNavigator();

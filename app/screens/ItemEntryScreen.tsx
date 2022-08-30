@@ -14,6 +14,7 @@ import {
   removeValue,
   storeData,
 } from "../shared/AsyncStorageFunctions";
+import Config from "react-native-config";
 
 const axios = require("axios");
 
@@ -49,15 +50,14 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
       method: "GET",
       url: `https://barcode-monster.p.rapidapi.com/${barcodeToSearch}`,
       headers: {
-        "X-RapidAPI-Key": "b9cc0a9b83msh037d555d67effd9p1b3e55jsn082910f482dc",
-        "X-RapidAPI-Host": "barcode-monster.p.rapidapi.com",
+        "X-RapidAPI-Key": Config.API_KEY,
+        "X-RapidAPI-Host": Config.API_HOST,
       },
     };
 
     axios
       .request(options)
       .then(function (response: { data: any }) {
-        // setItemName(response.data.description);
         if (response.data.description === undefined) {
           setbarcodeLookupSuccess(false);
         } else {
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   },
   labelText: {
     color: colours.text,
+    fontWeight: "500",
   },
   itemNameContainer: {
     marginHorizontal: "3%",
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     borderColor: colours.inputBorder,
     color: colours.text,
     height: 40,
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 10,
     marginTop: 3,
   },

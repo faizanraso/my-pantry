@@ -1,12 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Touchable,
-  TouchableOpacity,
-  GestureResponderEvent,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import colours from "../shared/colours";
@@ -50,18 +42,24 @@ export default function Item(props: { item: string }) {
     }
   }
 
+  function displayFullItemName() {
+    Alert.alert(props.item);
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.leftSideView}>
-        <Text style={styles.text}>{itemName}</Text>
-      </View>
+      <TouchableOpacity onPress={displayFullItemName}>
+        <View style={styles.leftSideView}>
+          <Text style={styles.text}>{itemName}</Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.rightSideView}>
         <TouchableOpacity onPress={deleteItem} style={styles.deleteButton}>
           <MaterialIcons name="delete" size={18} color={colours.deleteButton} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={decreaseQuantity}
-          disabled={true ? quantity == 0 : false}
+          disabled={true ? quantity <= 0 : false}
         >
           <AntDesign
             name="minuscircle"
@@ -69,7 +67,7 @@ export default function Item(props: { item: string }) {
             color={colours.enabledQuantityButton}
           />
         </TouchableOpacity>
-        <Text style={styles.text}>{"  " + quantity + "  "}</Text>
+        <Text style={styles.text}>{"   " + quantity + "   "}</Text>
         <TouchableOpacity onPress={increaseQuantity}>
           <AntDesign
             name="pluscircle"
