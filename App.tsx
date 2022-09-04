@@ -9,8 +9,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="light" backgroundColor={colours.secondary} />
-      <StackNavigator/>
-      {/* <TabBar /> */}
+      <StackNavigator />
     </NavigationContainer>
   );
 }

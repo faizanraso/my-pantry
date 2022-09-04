@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "my-pantry",
+    "owner": "faizanraso",
+    "name": "My Pantry Check",
     "slug": "my-pantry",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.faizanraso.mypantry"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,6 +30,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7f783730-c076-4987-9e45-04895b1a3258"
+      }
     }
   }
 }
