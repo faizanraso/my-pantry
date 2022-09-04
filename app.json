@@ -3,7 +3,7 @@
     "owner": "faizanraso",
     "name": "My Pantry Check",
     "slug": "my-pantry",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.faizanraso.mypantry"
+      "bundleIdentifier": "com.faizanraso.mypantrycheck"
     },
     "android": {
       "adaptiveIcon": {
