@@ -50,8 +50,8 @@ export default function ItemEntryScreen({ navigation }: { navigation: any }) {
       method: "GET",
       url: `https://barcode-monster.p.rapidapi.com/${barcodeToSearch}`,
       headers: {
-        "X-RapidAPI-Key": Config.API_KEY,
-        "X-RapidAPI-Host": Config.API_HOST,
+        "X-RapidAPI-Key": process.env.API_KEY,
+        "X-RapidAPI-Host": process.env.API_HOST,
       },
     };
 
