@@ -12,7 +12,8 @@ Technologies Used: TypeScript, React Native, AsyncStorage, react-navigation, axi
 # Demo
 
 
-[insert video here]
+https://user-images.githubusercontent.com/59986120/188340522-06eef593-3c9f-463a-a853-41d169795f4c.mov
+
 
 
 # Installation and Setup Instructions
