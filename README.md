@@ -1,6 +1,6 @@
 # My Pantry Check
 
-My Pantry CHeck is pantry inventory management system built using React Native.
+My Pantry Check is pantry inventory management system built using React Native.
 
 Have you ever gone to the store and wern't sure if you had paper towels at home? or don't remember which peanut butter you usually grab? My Pantry is a
 IOS App created to solve this problem. It lets you record the items you buy either by scanning their barcodes or manually entering in their information. As you 
